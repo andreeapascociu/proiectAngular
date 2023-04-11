@@ -1,0 +1,18 @@
+<h1>{{error}}</h1>
+
+<div class="add_item">
+    <button mat-raised-button color="accent" (click)="openDialog()">Add new item</button>
+</div>
+
+
+<div class="items">
+    <div *ngFor="let item of items" class="item">
+        <div class="item_content">
+        <p class="nume">Nume: {{item}}</p>
+        <p>Descriere: {{item}}</p>
+        <p>Cantitate: {{item}}</p>
+        <button>Delete</button>
+        <button>Edit</button>
+        </div>
+    </div>
+</div>
