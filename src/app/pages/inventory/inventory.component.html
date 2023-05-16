@@ -1,18 +1,16 @@
-<h1>{{error}}</h1>
-
 <div class="add_item">
-    <button mat-raised-button color="accent" (click)="openDialog()">Add new item</button>
+    <button mat-raised-button color="accent" (click)="openDialog(0)">Add new item</button>
 </div>
 
 
 <div class="items">
-    <div *ngFor="let item of items" class="item">
+    <div *ngFor="let item of itemList" class="item">
         <div class="item_content">
-        <p class="nume">Nume: {{item}}</p>
-        <p>Descriere: {{item}}</p>
-        <p>Cantitate: {{item}}</p>
-        <button>Delete</button>
-        <button>Edit</button>
+        <p class="nume">Nume: {{item.name}}</p>
+        <p>Cantitate: {{item.number}}</p>
+        <p>Descriere: {{item.category}}</p>
+        <button class="delete" (click)="deleteItem(item.id)">Delete</button>
+        <button class="edit" (click)="openDialog(item.id!)">Edit</button>
         </div>
     </div>
 </div>

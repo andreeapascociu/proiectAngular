@@ -8,7 +8,7 @@ import { Item } from 'src/models/items';
 })
 export class ItemService {
 
-  readonly baseUrl = "https://localhost:44385/api/item"
+  readonly baseUrl = "https://localhost:44385/api/item/"
   constructor(public httpClient: HttpClient) { }
 
   getItems(): Observable<Item[]> {
@@ -20,7 +20,7 @@ export class ItemService {
   }
 
   createItem(item: Item): Observable<Item> {
-    return this.httpClient.post(this.baseUrl + "create/", item) as Observable<Item>;
+    return this.httpClient.post(this.baseUrl + "post", item) as Observable<Item>;
   }
   
   delete(id: number): Observable<null> {

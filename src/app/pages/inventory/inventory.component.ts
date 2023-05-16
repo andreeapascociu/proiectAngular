@@ -33,12 +33,11 @@ export class InventoryComponent implements OnInit {
   error?: string;
 
     constructor(public dialog: MatDialog, public ItemService: ItemService) { }
+
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.getItems();
   }
-  //ngOnInit(): void {
-    //throw new Error('Method not implemented.');
-  //}
 
     getItems(): void {
       this.ItemService.getItems().subscribe((list:Item[]) => {
@@ -48,21 +47,28 @@ export class InventoryComponent implements OnInit {
       })
     }
 
-    async openDialog() {
+    deleteItem(id: number | undefined): void {
+      this.ItemService.delete(id!).subscribe(
+        () => {
+          window.location.reload();
+        },
+        (err) => {
+          this.error = err.error;
+        }
+      );
+    }
+
+    async openDialog(id: number | null) {
 
       const dialogRef = this.dialog.open(FormComponent, {
         width: '250px',
-        data: {items: this.items },
+        data: {idToBeEdit: id},
       });
 
       dialogRef.afterClosed().subscribe(() => {
         console.log('The dialog was closed');
       });
     };
-
-    //ngOnInit(): void {
-
-    //}
 
 }
 
